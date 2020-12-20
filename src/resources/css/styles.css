@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+    background-color:#d8d8d8;
+}
+
+h1, input, label, button {
+    font-family:'Courier New', Courier, monospace;
+    font-size: large;
+    inline-size: 100%;
+}
+
+h1 {
+    font-size: xx-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: normal;
+    padding-bottom: 50px ;
+}
+
+input {
+    height: auto;
+    padding: 5px;
+    margin-bottom: 30px;
+    width: 65%;
+}
+
+label {
+    color:black;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+
+    padding: 5px 10px;
+    margin-bottom: 10px;
+
+    width: 30%;
+    min-width: fit-content;
+}

@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  py-tube-downloader:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: py-tube-downloader
+    network_mode: host
