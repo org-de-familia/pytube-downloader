@@ -15,7 +15,7 @@ class File:
     time: int
 
 
-class VideoManager:
+class FilesManager:
     videos = {}
     audios = {}
 

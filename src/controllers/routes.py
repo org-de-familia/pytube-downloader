@@ -4,7 +4,7 @@ import services
 import configuration
 
 
-def configure_routes(app: fastapi.FastAPI, video_manager: services.VideoManager):
+def configure_routes(app: fastapi.FastAPI, video_manager: services.FilesManager):
 
     @app.get('/video/download')
     def get_download_video(url: str):

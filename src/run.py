@@ -7,7 +7,7 @@ import os
 
 
 app = fastapi.FastAPI()
-video_manager = services.VideoManager()
+video_manager = services.FilesManager()
 controllers.configure_routes(app=app, video_manager=video_manager)
 
 
