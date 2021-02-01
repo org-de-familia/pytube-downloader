@@ -6,4 +6,5 @@ services:
       context: ./
       dockerfile: Dockerfile
     container_name: py-tube-downloader
-    network_mode: host
+    ports:
+      - 5000:5000

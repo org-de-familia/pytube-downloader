@@ -1,11 +1,20 @@
 var video_download_url = '/video/download'
+var audio_download_url = '/audio/download'
 
-function download_video(url_element_id){
+function download_video(url){
+    download_file(url, video_download_url)
+}
+
+function download_audio(url){
+    download_file(url, audio_download_url)
+}
+
+function download_file(url_element_id, complement){
     url_element = document.getElementById(url_element_id);
 
     if (validate_url(url_element.value))
     {
-        url = video_download_url + '?url=' + url_element.value;
+        url = complement + '?url=' + url_element.value;
         download(url);
     } else {
         alert('Insira uma URL válida.');
