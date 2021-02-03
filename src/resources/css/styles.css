@@ -37,8 +37,8 @@ label {
 }
 
 button {
-    border: none;
-    border-radius: 5px;
+    border:solid;
+    border-radius: 15px;
 
     margin-bottom: 1%;
     padding: 2%;
@@ -49,11 +49,12 @@ button {
     margin-left: 20%;
     margin-right: 20%;
 
+    
     background-color: #fefefe;
 }
 
  /* For mobiles landscapes: */
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1024px) {
     body {
         padding: 2%;
     }
