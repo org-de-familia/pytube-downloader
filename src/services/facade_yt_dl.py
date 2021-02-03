@@ -1,10 +1,10 @@
 import os
-import youtube_dl
 from configuration import *
 
 
 def download_yt(url: str, temp_name: str, ydl_opts: dict, extension: str):
     try:
+        import youtube_dl
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             video_infos = ydl.extract_info(url)
 
@@ -23,8 +23,7 @@ def download_yt(url: str, temp_name: str, ydl_opts: dict, extension: str):
 def download_yt_video(url: str, temp_name: str):
     ydl_opts = {
         'outtmpl': '{}/{}'.format(VIDEO_PATH, temp_name),
-        'format': 'bestvideo/best',
-        'postprocessors': []
+        'logger': logger
     }
     return download_yt(url=url, ydl_opts=ydl_opts, temp_name=temp_name, extension='mp4')
 
