@@ -3,9 +3,7 @@ import threading
 import time
 from datetime import datetime
 
-from loguru import logger
-
-import configuration
+from configuration import *
 import services
 
 
@@ -103,9 +101,8 @@ class FilesManager:
     @staticmethod
     def clean_video_path():
         try:
-            video_path = os.path.join(os.getcwd(), configuration.VIDEO_PATH)
-            for file in os.listdir(video_path):
-                file_path = os.path.join(video_path, file)
+            for file in os.listdir(VIDEO_PATH):
+                file_path = os.path.join(VIDEO_PATH, file)
                 os.remove(file_path)
                 logger.info('Removing {}'.format(file_path))
         except Exception as e:
