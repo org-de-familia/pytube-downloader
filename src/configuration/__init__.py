@@ -3,7 +3,8 @@ import os
 
 VIDEO_PATH = os.path.join(os.getcwd(), 'videos')
 RESOURCES_PATH = 'resources'
-LOG_FILE = "./logfile.log"
+LOG_FILE = './logfile.log'
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
 logging.basicConfig(filename=LOG_FILE,
                     filemode="w+",
