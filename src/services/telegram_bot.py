@@ -3,7 +3,8 @@ from uuid import uuid4
 import configuration
 from configuration import logger
 import services
-from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, ParseMode, InlineQueryResultVoice
+from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, ParseMode, InlineQueryResultVoice, \
+    InlineQueryResultAudio
 from telegram.ext import Updater, CommandHandler, CallbackContext, InlineQueryHandler
 from py_de_familia import clidefamilia
 
@@ -48,20 +49,37 @@ def pdf(update: Update, context: CallbackContext) -> None:
 def inlinequery(update: Update, context: CallbackContext) -> None:
     """Handle the inline query."""
     chars_de_familia = clidefamilia.listar_personagens_de_familia()
-
+    query = update.inline_query.query
     results = []
-
-    for char in chars_de_familia:
-        for frase in clidefamilia.obter_frases_de_familia(char):
-            results.append(
-                InlineQueryResultArticle(
-                    id=uuid4(),
-                    title=f'{char} {frase}',
-                    input_message_content=InputTextMessageContent(
-                        f"/pdf {char} {frase} ", parse_mode=ParseMode.MARKDOWN
-                    ),
+    if query == 'pdf':
+        for char in chars_de_familia:
+            for frase in clidefamilia.obter_frases_de_familia(char):
+                results.append(
+                    InlineQueryResultArticle(
+                        id=uuid4(),
+                        title=f'{char} {frase}',
+                        input_message_content=InputTextMessageContent(
+                            f"/pdf {char} {frase} ", parse_mode=ParseMode.MARKDOWN
+                        ),
+                    )
                 )
+    elif query.startswith('http://') or query.startswith('https://'):
+        results = [
+            InlineQueryResultArticle(
+                id=uuid4(),
+                title=f'Video',
+                input_message_content=InputTextMessageContent(
+                    f"/video {query} ", parse_mode=ParseMode.MARKDOWN
+                ),
+            ),
+            InlineQueryResultArticle(
+                id=uuid4(),
+                title=f'Audio',
+                input_message_content=InputTextMessageContent(
+                    f"/audio {query} ", parse_mode=ParseMode.MARKDOWN
+                ),
             )
+        ]
 
     update.inline_query.answer(results=results)
 
