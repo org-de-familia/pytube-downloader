@@ -3,10 +3,16 @@ from uuid import uuid4
 import configuration
 from configuration import logger
 import services
-from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, ParseMode, InlineQueryResultVoice, \
-    InlineQueryResultAudio
+from telegram import Update, InlineQueryResultArticle, InputTextMessageContent, ParseMode
 from telegram.ext import Updater, CommandHandler, CallbackContext, InlineQueryHandler
-from py_de_familia import clidefamilia
+
+
+HELP_MESSAGE = "Comandos disponíveis:\n" \
+               "/audio {link do YouTube}: extrai o áudio do link e retorna como arquivo MP3 (.mp3)\n" \
+               "/video {link do YouTube}: baixa vídeo e retorna como arquivo MP4 (.mp4)\n" \
+               "/help: informa os comandos e suas funcionalidades.\n" \
+               "Caso o bot seja citado com @pytube_downloader_bot {link do YouTube}, " \
+               "serão apresentadas 2 opções para autopreenchimento dos comandos."
 
 
 def process_request(msg, command):
@@ -16,13 +22,11 @@ def process_request(msg, command):
 
 
 def start(update: Update, context: CallbackContext) -> None:
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    update.message.reply_text(f'Seja bem vindo ao PyTubeDownloader.\n{HELP_MESSAGE}')
 
 
 def help_command(update: Update, context: CallbackContext) -> None:
-    """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    update.message.reply_text(f'{HELP_MESSAGE}')
 
 
 def download_audio(update: Update, context: CallbackContext) -> None:
@@ -39,41 +43,21 @@ def download_video(update: Update, context: CallbackContext) -> None:
     update.message.reply_video(video=open(file_path, 'rb'), filename=file_name)
 
 
-def pdf(update: Update, context: CallbackContext) -> None:
-    params = process_request(update.message.text, 'pdf').split(' ')
-    logger.debug(f'PDF: {params}')
-    audio_path = clidefamilia.obter_audio_de_familia(params[0], params[1])
-    update.message.reply_voice(voice=open(audio_path, 'rb'))
-
-
 def inlinequery(update: Update, context: CallbackContext) -> None:
-    """Handle the inline query."""
-    chars_de_familia = clidefamilia.listar_personagens_de_familia()
     query = update.inline_query.query
     results = []
-    if query == 'pdf':
-        for char in chars_de_familia:
-            for frase in clidefamilia.obter_frases_de_familia(char):
-                results.append(
-                    InlineQueryResultArticle(
-                        id=uuid4(),
-                        title=f'{char} {frase}',
-                        input_message_content=InputTextMessageContent(
-                            f"/pdf {char} {frase} ", parse_mode=ParseMode.MARKDOWN
-                        ),
-                    )
-                )
-    elif query.startswith('http://') or query.startswith('https://'):
+
+    if query.startswith('http://') or query.startswith('https://'):
         results = [
             InlineQueryResultArticle(
-                id=uuid4(),
+                id=str(uuid4()),
                 title=f'Video',
                 input_message_content=InputTextMessageContent(
                     f"/video {query} ", parse_mode=ParseMode.MARKDOWN
                 ),
             ),
             InlineQueryResultArticle(
-                id=uuid4(),
+                id=str(uuid4()),
                 title=f'Audio',
                 input_message_content=InputTextMessageContent(
                     f"/audio {query} ", parse_mode=ParseMode.MARKDOWN
@@ -88,12 +72,10 @@ def start_telegram_bot():
     updater = Updater(configuration.BOT_TOKEN)
     dispatcher = updater.dispatcher
 
-    # on different commands - answer in Telegram
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(CommandHandler("help", help_command))
     dispatcher.add_handler(CommandHandler("audio", download_audio))
     dispatcher.add_handler(CommandHandler("video", download_video))
-    dispatcher.add_handler(CommandHandler("pdf", pdf))
 
     dispatcher.add_handler(InlineQueryHandler(inlinequery))
 
