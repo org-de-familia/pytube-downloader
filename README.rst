@@ -1,8 +1,13 @@
-.. image:: https://travis-ci.com/org-de-familia/pytube-downloader.svg?branch=main
-    :target: https://travis-ci.com/github/org-de-familia/pytube-downloader
+.. raw:: html
 
-
-.. image:: https://github.com/org-de-familia/pytube-downloader/blob/main/docs/source/static/pytube-logo.png?raw=true
+    <p align="center">
+        <a href="#readme">
+            <img alt="Loguru logo" src="https://github.com/org-de-familia/pytube-downloader/blob/main/docs/source/static/pytube-logo.png?raw=true">
+        </a>
+    </p>
+    <p align="center">
+        <a href="https://travis-ci.com/github/org-de-familia/pytube-downloader"><img alt="Travis CI" src="https://travis-ci.com/org-de-familia/pytube-downloader.svg?branch=main"></a>
+    <p/>
 
 ==================
 
