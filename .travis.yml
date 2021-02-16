@@ -1,5 +1,4 @@
 sudo: required
-language: python
 
 services:
   - docker
@@ -19,4 +18,3 @@ deploy:
   on:
     branch: main
 
-    
