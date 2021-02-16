@@ -11,14 +11,13 @@
 
 ==================
 
-- Link: https://pytube-downloader.herokuapp.com/
-
+- **Link**: https://pytube-downloader.herokuapp.com/
 - **Description**: Web environement for ``youtube_dl``
 - **Objective**: Provides facility to download Youtube media 
 - **Date**: 15/02/2021
 - **Authors**: 
-     - `@hrszanini <https://github.com/hrszanini>`_ | <hrszanini@gmail.com>
-     - `@augustoliks <https://github.com/augustoliks>`_ | <carlos.neto.dev@gmail.com>
+    - `@hrszanini <https://github.com/hrszanini>`_ | <hrszanini@gmail.com>
+    - `@augustoliks <https://github.com/augustoliks>`_ | <carlos.neto.dev@gmail.com>
 - **Actual Features**:
     - Download mp4 from Youtube Link;
     - Download mp3 from Youtube Link;
