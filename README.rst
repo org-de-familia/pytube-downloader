@@ -6,13 +6,16 @@
         </a>
     </p>
     <p align="center">
-        <a href="https://travis-ci.com/github/org-de-familia/pytube-downloader"><img alt="Travis CI" src="https://travis-ci.com/org-de-familia/pytube-downloader.svg?branch=main"></a>
+    <a href="https://travis-ci.com/github/org-de-familia/pytube-downloader"><img alt="Travis CI" src="https://travis-ci.com/org-de-familia/pytube-downloader.svg?branch=main"></a>    
+    <a href="https://telegram.me/pytube_downloader_bot"><img alt="chatroom icon" src="https://patrolavia.github.io/telegram-badge/chat.png"></a>
+    <a href="https://dashboard.heroku.com/apps/pytube-downloader"><img alt="chatroom icon" src="https://heroku-badge.herokuapp.com/?app=pytube-downloader"></a>
+    
     <p/>
 
 ==================
 
 - **Link**: https://pytube-downloader.herokuapp.com/
-- **Description**: Web environement for ``youtube_dl``
+- **Description**: Web environement and Telegram Bot for ``youtube_dl``
 - **Objective**: Provides facility to download Youtube media 
 - **Date**: 15/02/2021
 - **Authors**: 
@@ -21,6 +24,7 @@
 - **Actual Features**:
     - Download mp4 from Youtube Link;
     - Download mp3 from Youtube Link;
+    - Telegram Bot;
 
 Project Structure
 -----------------
