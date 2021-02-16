@@ -11,11 +11,56 @@
 
 ==================
 
-Web environement for ``youtube_dl``.
-
 - Link: https://pytube-downloader.herokuapp.com/
 
-Developers Notes
+- **Description**: Web environement for ``youtube_dl``
+- **Objective**: Provides facility to download Youtube media 
+- **Date**: 15/02/2021
+- **Authors**: 
+     - `@hrszanini <https://github.com/hrszanini>`_ | <hrszanini@gmail.com>
+     - `@augustoliks <https://github.com/augustoliks>`_ | <carlos.neto.dev@gmail.com>
+- **Actual Features**:
+    - Download mp4 from Youtube Link;
+    - Download mp3 from Youtube Link;
+
+Project Structure
+-----------------
+
+.. code-block:: bash
+
+    ├── docker-compose.yaml
+    ├── Dockerfile
+    ├── docs
+    │   └── source
+    │       └── static
+    │           └── pytube-logo.png
+    ├── poetry.lock
+    ├── pyproject.toml
+    ├── README.rst
+    ├── requirements.txt
+    └── src
+        ├── configuration
+        │   └── __init__.py
+        ├── controllers
+        │   ├── __init__.py
+        │   └── routes.py
+        ├── resources
+        │   ├── css
+        │   │   └── styles.css
+        │   ├── html
+        │   │   └── index.html
+        │   ├── img
+        │   │   └── pytube_logo.png
+        │   └── js
+        │       └── script.js
+        ├── run.py
+        └── services
+            ├── facade_yt_dl.py
+            ├── __init__.py
+            ├── telegram_bot.py
+            └── video_manager.py
+
+Developers Guide
 ----------------
 
 Add new dependency:
@@ -24,3 +69,9 @@ Add new dependency:
 
     poetry add DEPENDENCY
     poetry export -f requirements.txt > requirements.txt
+
+Setup environement for development
+
+.. code-block:: bash
+
+    docker-compose up --build -d
