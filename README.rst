@@ -13,6 +13,9 @@ Web environement for ``youtube_dl``.
 Developers Notes
 ----------------
 
+Add new dependency:
+
 .. code-block:: bash
+
     poetry add DEPENDENCY
     poetry export -f requirements.txt > requirements.txt
