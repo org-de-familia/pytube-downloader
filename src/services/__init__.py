@@ -4,3 +4,8 @@ from .video_manager import (
     FilesManager
 )
 
+from .telegram_bot import (
+    start_telegram_bot
+)
+
+files_manager = FilesManager()
